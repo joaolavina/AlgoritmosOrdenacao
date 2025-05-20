@@ -11,6 +11,8 @@ public class Ordenador {
     //          = n^2 + 2n + 1
     //          = Ω(n^2)
     //          caso o vetor já esteja ordenado
+
+    // bubblesort não tem recorrencia! então não tem complexidade algoritmica para fazer aqui!
     public int[] bubbleSort(int[] info) {
         int n = info.length;                        // 1
         boolean swapped;
