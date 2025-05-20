@@ -1,21 +1,31 @@
 public class Ordenador {
     // bubbleSort
 
+    // pior caso: 1 + n * (2 + 5n)
+    //          = 1 + 2n + 5n^2
+    //          = 5n^2 + 2n + 1
+    //          = O(n^2)
+    //          // caso o vetor esteja ordenado de forma inversa
+    // melhor caso: 1 + n * (2 + 1n)
+    //          = 1 + 2n + n^2
+    //          = n^2 + 2n + 1
+    //          = Ω(n^2)
+    //          caso o vetor já esteja ordenado
     public int[] bubbleSort(int[] info) {
-        int n = info.length;
+        int n = info.length;                        // 1
         boolean swapped;
-        for (int i = 0; i < n - 1; i++) {
-            swapped = false;
-            for (int j = 0; j < n - i - 1; j++) {
-                if (info[j] > info[j + 1]) {
-                    int temp = info[j];
-                    info[j] = info[j + 1];
-                    info[j + 1] = temp;
-                    swapped = true;
+        for (int i = 0; i < n - 1; i++) {           // n 
+            swapped = false;                            // 1
+            for (int j = 0; j < n - i - 1; j++) {       // n
+                if (info[j] > info[j + 1]) {                // 1
+                    int temp = info[j];                         // 1  
+                    info[j] = info[j + 1];                      // 1
+                    info[j + 1] = temp;                         // 1
+                    swapped = true;                             // 1
                 }
             }
 
-            if (!swapped) {
+            if (!swapped) {                             // 1
                 break;
             }
         }
