@@ -78,7 +78,7 @@ public class Ordenador {
 
             do {
                 b--;                                                // 1
-            } while (b > start && info[b] > pivot);             // n
+            } while (b >= start && info[b] > pivot);             // n
 
             if (a >= b) {                                       // 1
                 break;
