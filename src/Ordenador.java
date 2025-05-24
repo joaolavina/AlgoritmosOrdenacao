@@ -99,68 +99,77 @@ public class Ordenador {
 
     // mergeSort
 
+    // 2
     public int[] mergeSort(int[] info) {
-        int n = info.length -1;
-        return mergeSort(info, 0, n);
+        int n = info.length -1;                     // 1
+        return mergeSort(info, 0, n);         // 1
     }
 
+    // pior caso: O(n) + 2T(n/2) + 4
+    //          = T(n) = Θ(n log n)
+    // melhor caso: 2
     public int[] mergeSort(int[] info, int start, int end) {
-        if (start < end) {
-            int mid = (start + end) / 2;
-            info = mergeSort(info, start, mid);
-            info = mergeSort(info, mid + 1, end);
-            info = merge(info, start, mid, end);
+        if (start < end) {                          // 1
+            int mid = (start + end) / 2;            // 1
+            info = mergeSort(info, start, mid);     // T(n/2)
+            info = mergeSort(info, mid + 1, end);   // T(n/2)
+            info = merge(info, start, mid, end);    // O(n)
         }
-        return info;
+        return info;                                // 1
     }
 
+    // pior caso: 8 + n + n + n(4) + n(3) + n(3)
+    //          = 8 + 2n + 4n + 3n + 3n
+    //          = 8 + 12n
+    // melhor caso: 8 + n
+    // ambos os casos são O(n)
     public int[] merge(int[] info, int start, int mid, int end) {
-        int leftLength = mid - start + 1;
-        int[] left = new int[leftLength];
+        int leftLength = mid - start + 1;           // 1
+        int[] left = new int[leftLength];           // 1
 
-        for (int i = 0; i < leftLength - 1; i++) {
-            left[i] = info[start + i];
+        for (int i = 0; i < leftLength - 1; i++) {  // n
+            left[i] = info[start + i];              // 1
         }
 
-        int rightLength = end - mid;
-        int[] right = new int[rightLength + 1];
+        int rightLength = end - mid;                // 1
+        int[] right = new int[rightLength + 1];     // 1
 
-        for (int i = 0; i < rightLength; i++) {
-            right[i] = info[mid + 1 + i];
+        for (int i = 0; i < rightLength; i++) {     // n
+            right[i] = info[mid + 1 + i];           // 1
         }
 
-        int cLeft = 0;
-        int cRight = 0;
+        int cLeft = 0;                              // 1   
+        int cRight = 0;                             // 1       
 
-        int i;
+        int i;                                      // 1
 
-        for (i = start; i < end; i++) {
-            if(cLeft < leftLength && cRight < rightLength) {
-                if (left[cLeft] <= right[cRight]) {
-                    info[i] = left[cLeft];
-                    cLeft++;
+        for (i = start; i < end; i++) {             // n
+            if(cLeft < leftLength && cRight < rightLength) {  // 1
+                if (left[cLeft] <= right[cRight]) {           // 1
+                    info[i] = left[cLeft];                    // 1
+                    cLeft++;                                  // 1
                 } else {
-                    info[i] = right[cRight];
-                    cRight++;
+                    info[i] = right[cRight];                  // 1    
+                    cRight++;                                 // 1
                 }
             } else{
                 break;
             }
         }
 
-        while (cLeft < leftLength) {
-            info[i] = left[cLeft];
-            cLeft++;
-            i++;
+        while (cLeft < leftLength) {                // n
+            info[i] = left[cLeft];                  // 1 
+            cLeft++;                                // 1 
+            i++;                                    // 1
         }
 
-        while (cRight < rightLength) {
-            info[i] = right[cRight];
-            cRight++;
-            i++;
+        while (cRight < rightLength) {              // n
+            info[i] = right[cRight];                // 1
+            cRight++;                               // 1 
+            i++;                                    // 1
         }
 
-        return info;
+        return info;                                // 1
     }
 }
  
