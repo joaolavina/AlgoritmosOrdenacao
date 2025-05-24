@@ -1,3 +1,5 @@
+package com.ordenacao.algoritmos;
+
 public class Ordenador {
     // bubbleSort
 
