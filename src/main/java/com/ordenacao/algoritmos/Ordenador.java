@@ -47,14 +47,20 @@ public class Ordenador {
         return quickSort(info, 0, n);         // 1
     }
 
+
+    // TEM Q MEXER NOS RESULTADOS DOS CASOS ABAIXO (nn entendi o teorema direito desculpa ;-;)
+    
     // pior caso: (2 + 2T(n)) + (2n^2 + 6n + 9)
     //           
     // melhor caso caso: 2
     private int[] quickSort(int[] info, int start, int end) {
         if (start < end) {                                      // 1
-            int index = partition(info, start, end);                // 1   
+            int index = partition(info, start, end);            //1
+            if (index - start <= end - (index + 1)){                // 1   
             info = quickSort(info, start, index - 1);               // T(n)
+            } else {
             info = quickSort(info, index + 1, end);                 // T(n)
+            }
         }
 
         return info;                                            // 1

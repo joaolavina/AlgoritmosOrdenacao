@@ -22,7 +22,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Melhor caso: " + tempoDecorrido + "ms");
+        System.out.println("Melhor caso1: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Caso médio: " + tempoDecorrido + "ms");
+        System.out.println("Caso médio1: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -56,7 +56,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Pior caso: " + tempoDecorrido + "ms");
+        System.out.println("Pior caso1: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -73,7 +73,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Melhor caso: " + tempoDecorrido + "ms");
+        System.out.println("Melhor caso2: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -90,7 +90,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Caso médio: " + tempoDecorrido + "ms");
+        System.out.println("Caso médio2: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -107,7 +107,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Pior caso: " + tempoDecorrido + "ms");
+        System.out.println("Pior caso2: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -124,7 +124,7 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Melhor caso: " + tempoDecorrido + "ms");
+        System.out.println("Melhor caso3: " + tempoDecorrido + "ms");
     }
 
     @Test
@@ -141,12 +141,12 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Caso médio: " + tempoDecorrido + "ms");
+        System.out.println("Caso médio3: " + tempoDecorrido + "ms");
     }
 
     @Test
     public void piorCasoTeste3(){
-        vetor = new int[10000];
+        vetor = new int[100000];
 
         for (int i = 0; i < vetor.length; i++) {
             vetor[i] = vetor.length - i; 
@@ -158,6 +158,6 @@ public class MergeSort {
 
         double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
 
-        System.out.println("Pior caso: " + tempoDecorrido + "ms");
+        System.out.println("Pior caso3: " + tempoDecorrido + "ms");
     }
 }
