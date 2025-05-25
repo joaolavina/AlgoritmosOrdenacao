@@ -1,3 +1,6 @@
+import java.util.Random;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import com.ordenacao.algoritmos.Ordenador;
@@ -6,6 +9,12 @@ public class BubbleSortTeste {
 
     private Ordenador ordenador = new Ordenador();
     private int[] vetor;
+    private Random random = new Random();
+
+    @Before
+    public void setUp() {
+        random.setSeed(0);
+    }
 
     @Test
     public void melhorCasoTeste1() {
@@ -26,11 +35,7 @@ public class BubbleSortTeste {
 
     @Test
     public void medioCasoTeste1() {
-        vetor = new int[1000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = (int) (Math.random() * 1000);
-        }
+        vetor = random.ints(1000, 0, 1000).toArray();
 
         double tempoInicial = System.nanoTime();
         vetor = ordenador.bubbleSort(vetor);
@@ -77,11 +82,7 @@ public class BubbleSortTeste {
 
     @Test
     public void medioCasoTeste2() {
-        vetor = new int[10000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = (int) (Math.random() * 10000);
-        }
+        vetor = random.ints(10000, 0, 10000).toArray();
 
         double tempoInicial = System.nanoTime();
         vetor = ordenador.bubbleSort(vetor);
@@ -128,11 +129,7 @@ public class BubbleSortTeste {
 
     @Test
     public void medioCasoTeste3() {
-        vetor = new int[100000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = (int) (Math.random() * 100000);
-        }
+        vetor = random.ints(100000, 0, 100000).toArray();
 
         double tempoInicial = System.nanoTime();
         vetor = ordenador.bubbleSort(vetor);
