@@ -8,152 +8,102 @@ import com.ordenacao.algoritmos.Ordenador;
 public class QuickSort {
     
     private Ordenador ordenador = new Ordenador();
-    private int[] vetor;
     private Random random = new Random();
+    private int[] vetorDezMilOrdenado;
+    private int[] vetorDezMilAleatorio;
+    private int[] vetorDezMilOrdemInversa;
+    private int[] vetorCemMilOrdenado;
+    private int[] vetorCemMilAleatorio;
+    private int[] vetorCemMilOrdemInversa;
+    private int[] vetorUmMilhaoOrdenado;
+    private int[] vetorUmMilhaoAleatorio;
+    private int[] vetorUmMilhaoOrdemInversa;
 
     @Before
     public void setUp() {
         random.setSeed(0);
+
+        int dezMil = 10000;
+        vetorDezMilOrdenado = gerarVetorOrdenado(dezMil);
+        vetorDezMilAleatorio = gerarVetorAleatorio(dezMil);
+        vetorDezMilOrdemInversa = gerarVetorOrdemInversa(dezMil);
+
+        int cemMil = 100000;
+        vetorCemMilOrdenado = gerarVetorOrdenado(cemMil);
+        vetorCemMilAleatorio = gerarVetorAleatorio(cemMil);
+        vetorCemMilOrdemInversa = gerarVetorOrdemInversa(cemMil);
+
+        int umMilhao = 1000000;
+        vetorUmMilhaoOrdenado = gerarVetorOrdenado(umMilhao);
+        vetorUmMilhaoAleatorio = gerarVetorAleatorio(umMilhao);
+        vetorUmMilhaoOrdemInversa = gerarVetorOrdemInversa(umMilhao);
     }
 
     @Test
-    public void melhorCasoTeste1(){
-        vetor = new int[1000];
+    public void melhorCasoDezMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorDezMilOrdenado);
+    }
 
-        for (int i = 0; i < vetor.length; i++) {
+    @Test
+    public void medioCasoDezMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorDezMilAleatorio);
+    }
+
+    @Test
+    public void piorCasoDezMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorDezMilOrdemInversa);
+    }
+
+    @Test
+    public void melhorCasoCemMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorCemMilOrdenado);
+    }
+
+    @Test
+    public void medioCasoCemMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorCemMilAleatorio);
+    }
+
+    @Test
+    public void piorCasoCemMilTeste() {
+        int[] vetor = ordenador.quickSort(vetorCemMilOrdemInversa);
+    }
+
+    @Test
+    public void melhorCasoUmMilhaoTeste() {
+        int[] vetor = ordenador.quickSort(vetorUmMilhaoOrdenado);
+    }
+
+    @Test
+    public void medioCasoUmMilhaoTeste() {
+        int[] vetor = ordenador.quickSort(vetorUmMilhaoAleatorio);
+    }
+
+    @Test
+    public void piorCasoUmMilhaoTeste() {
+        int[] vetor = ordenador.quickSort(vetorUmMilhaoOrdemInversa);
+    }
+
+    private int[] gerarVetorOrdenado(int tamanho) {
+        int[] vetor = new int[tamanho];
+        for (int i = 0; i < tamanho; i++) {
+            vetor[i] = i;
+        }
+        return vetor;
+    }
+
+    private int[] gerarVetorAleatorio(int tamanho) {
+        int[] vetor = new int[tamanho];
+        vetor = random.ints(tamanho, 0, tamanho).toArray();
+        return vetor;
+    }
+
+    private int[] gerarVetorOrdemInversa(int tamanho) {
+        int[] vetor = new int[tamanho];
+          for (int i = vetor.length - 1; i > 0; i--) {
             vetor[i] = i;
         }
 
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Melhor caso1: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void medioCasoTeste1(){
-        vetor = random.ints(1000, 0, 1000).toArray();
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Caso médio1: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void piorCasoTeste1(){
-        vetor = new int[1000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = vetor.length - i;
-        }
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Pior caso1: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void melhorCasoTeste2(){
-        vetor = new int[10000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = i;
-        }
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Melhor caso2: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void medioCasoTeste2(){
-        vetor = random.ints(10000, 0, 10000).toArray();
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Caso médio2: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void piorCasoTeste2(){
-        vetor = new int[10000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = vetor.length - i;
-        }
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Pior caso2: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void melhorCasoTeste3(){
-        vetor = new int[100000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = i;
-        }
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Melhor caso3: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void medioCasoTeste3(){
-        vetor = random.ints(100000, 0, 100000).toArray();
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Caso médio3: " + tempoDecorrido + "ms");
-    }
-
-    @Test
-    public void piorCasoTeste3(){
-        vetor = new int[100000];
-
-        for (int i = 0; i < vetor.length; i++) {
-            vetor[i] = vetor.length - i; 
-        }
-
-        double tempoInicial = System.nanoTime();
-        vetor = ordenador.quickSort(vetor);
-        double tempoFinal = System.nanoTime();
-
-        double tempoDecorrido = (tempoFinal - tempoInicial)/1_000_000.0;
-
-        System.out.println("Pior caso3: " + tempoDecorrido + "ms");
+        return vetor;
     }
 }
